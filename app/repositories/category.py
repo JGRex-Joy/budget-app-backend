@@ -35,7 +35,7 @@ class CategoryRepository:
         query = query.group_by(Category.id)
         return query.all()
     
-    def create_category(self, user_id: int, category: CategoryCreate) -> Category:
+    def create(self, user_id: int, category: CategoryCreate) -> Category:
         db_category = Category(
             user_id = user_id,
             name = category.name,
@@ -49,7 +49,7 @@ class CategoryRepository:
         self.db.refresh(db_category)
         return db_category
     
-    def update_category(self, category_id: int, user_id: int, category_update: CategoryUpdate) -> Optional[Category]:
+    def update(self, category_id: int, user_id: int, category_update: CategoryUpdate) -> Optional[Category]:
         db_category = self.get_by_id(category_id, user_id)
         if not db_category:
             return None
@@ -67,7 +67,7 @@ class CategoryRepository:
         self.db.refresh(db_category)
         return db_category
     
-    def delete_category(self, category_id: int, user_id: int) -> bool:
+    def delete(self, category_id: int, user_id: int) -> bool:
         db_category = self.get_by_id(category_id, user_id)
         if not db_category:
             return False

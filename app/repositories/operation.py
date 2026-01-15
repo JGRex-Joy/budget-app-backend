@@ -65,7 +65,7 @@ class OperationRepository:
         
         return query.order_by(Operation.operation_date.desc()).all()
     
-    def create_operation(self, user_id: int, operation: OperationCreate) -> Operation:
+    def create(self, user_id: int, operation: OperationCreate) -> Operation:
         db_operation = Operation(
             user_id = user_id,
             account_id = operation.account_id,
@@ -80,7 +80,7 @@ class OperationRepository:
         self.db.refresh(db_operation)
         return db_operation
     
-    def update_category(self, operation_id: int, user_id: int, operation_update: OperationUpdate) -> Optional[Operation]:
+    def update(self, operation_id: int, user_id: int, operation_update: OperationUpdate) -> Optional[Operation]:
         db_operation = self.get_by_id(operation_id, user_id)
         if not db_operation:
             return None
@@ -100,7 +100,7 @@ class OperationRepository:
         self.db.refresh(db_operation)
         return db_operation
 
-    def delete_category(self, operation_id: int, user_id: int) -> Optional[Operation]:
+    def delete(self, operation_id: int, user_id: int) -> Optional[Operation]:
         db_operation = self.get_by_id(operation_id, user_id)
         if not db_operation:
             return False
