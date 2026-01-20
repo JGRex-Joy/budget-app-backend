@@ -1,9 +1,5 @@
 from pydantic_settings import BaseSettings
 
-import os
-from dotenv import load_dotenv
-load_dotenv()
-
 class Settings(BaseSettings):
     APP_NAME: str = "Budget App Backend"
     DATABASE_URL: str

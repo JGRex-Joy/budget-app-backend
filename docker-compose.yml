@@ -16,8 +16,8 @@ services:
       - "8000:8000"
     depends_on:
       - db
-    environment:
-      DATABASE_URL: postgresql://budget:budget58@db:5432/budgetdb
+    env_file:
+      - .env
     volumes:
       - ./app:/app/app
     restart: on-failure
