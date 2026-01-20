@@ -9,7 +9,7 @@ class CategoryBase(BaseModel):
     name: str
     type: CategoryType
     icon: str
-    color: str
+    color: Optional[str]
     
 class CategoryCreate(CategoryBase):
     pass
