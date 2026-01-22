@@ -57,7 +57,7 @@ class AccountRepository:
         
         self.db.delete(db_account)
         self.db.commit()
-        self.db.refresh(db_account)
+        self.db.refresh()
         
         return True
     
@@ -68,5 +68,5 @@ class AccountRepository:
         
         db_account.balance += amount
         self.db.commit()
-        self.db.refresh()
+        self.db.refresh(db_account)
         return db_account
